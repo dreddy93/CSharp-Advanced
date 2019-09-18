@@ -34,7 +34,7 @@ namespace _1._1_P01_Diagonal_Difference
                 secondDiagonal += mmArray[row, col];
             }
 
-            Console.WriteLine(Math.Abs(firstDiagonal - secondDiagonal));
+            Console.WriteLine(Math.Abs(firstDiagonal - secondDiagonal)); 
         }
     }
 }
