@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+
+namespace _1._P04_Matching_Brackets
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+
+            Stack<int> brakets = new Stack<int>();
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                char ch = input[i];
+                if (ch =='(')
+                {
+                    brakets.Push(i);
+                }
+                else if (ch == ')')
+                {
+                    int start = brakets.Pop();
+                    int length = i - start + 1;
+                    Console.WriteLine(input.Substring(start, length));// взимаме текста от индекса в start, като вадим индекси на брой  length
+                }
+            }
+        }
+    }
+}
