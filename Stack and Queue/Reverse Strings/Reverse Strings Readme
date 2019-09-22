@@ -3,6 +3,6 @@ Write program that:
 •	Reverses it using a Stack<T>
 •	Prints the result back at the terminal
 Examples
-Input	Output
-I Love C#	-> #C evoL I
-Stacks and Queues	-> seueuQ dna skcatS
+Input	                      Output
+I Love C#	                #C evoL I
+Stacks and Queues	        seueuQ dna skcatS
