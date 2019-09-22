@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Empty_project
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] input = Console.ReadLine().Split();
+            Stack<string> stack = new Stack<string>(input.Reverse());
+            int sum = int.Parse(stack.Pop());
+            char operation = char.Parse(stack.Pop());
+            int number = int.Parse(stack.Pop());
+            
+            while (true)
+            {
+                if (operation == '-')
+                {
+                    sum -= number;
+                }
+                else if (operation == '+')
+                {
+                    sum += number;
+                }
+                if (stack.Count == 0)
+                {
+                    break;
+                }
+                operation = char.Parse(stack.Pop());
+                number = int.Parse(stack.Pop());
+            }
+            Console.WriteLine(sum);
+        }
+    }
+}
