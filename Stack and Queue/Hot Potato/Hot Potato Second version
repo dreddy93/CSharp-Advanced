@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+
+namespace _1._P05_Hot_Potato
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] namesForGame = Console.ReadLine().Split(' ');
+            int rotations = int.Parse(Console.ReadLine());
+
+            Queue<string> names = new Queue<string>();
+            foreach (var item in namesForGame)
+            {
+                names.Enqueue(item);
+            }
+            while (names.Count != 1)
+            {
+                for (int i = 1; i <= rotations; i++)
+                {
+                    if (i < rotations)
+                    {
+                        string leave = names.Dequeue();
+                        names.Enqueue(leave);
+                    }
+                    else if (i == rotations)
+                    {
+                        Console.WriteLine($"Removed {names.Dequeue()}");
+                    }
+                }
+            }
+            Console.WriteLine($"Last is {names.Dequeue()}");
+        }
+    }
+}
