@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Empty_project
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int quantity = int.Parse(Console.ReadLine());
+            List<int> orders = Console.ReadLine().Split(" ").Select(int.Parse).ToList();
+            Queue<int> queue = new Queue<int>(orders);
+            int maxOrder = int.MinValue;
+            
+            while (quantity > 0 && queue.Count != 0)
+            {
+                int order = queue.Peek();
+                if (quantity >= order)
+                {
+                    queue.Dequeue();
+                    if (maxOrder < order)
+                    {
+                        maxOrder = order;
+                    }
+                    quantity -= order;
+                }
+                else if (quantity < order)
+                {
+                    Console.WriteLine(maxOrder);
+                    Console.WriteLine($"Orders left: {string.Join(", ", queue)}");
+                    return;
+                }
+            }
+            Console.WriteLine(maxOrder);
+            Console.WriteLine("Orders complete");
+        }
+    }
+}
