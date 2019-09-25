@@ -1,0 +1,62 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Empty_project
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] input = Console.ReadLine().Split(" ").Select(x => int.Parse(x)).ToArray();
+
+            int enqueueNumbers = input[0];
+            int dequeueNumbers = input[1];
+            int numberToLookFor = input[2];
+            Queue<int> queue = new Queue<int>();
+            int[] randomNumbers = Console.ReadLine().Split(" ").Select(int.Parse).ToArray();
+
+            for (int i = 0; i < enqueueNumbers; i++)
+            {
+                queue.Enqueue(randomNumbers[i]);
+            }
+
+            if (queue.Count < dequeueNumbers)
+            {
+                for (int i = 0; i < queue.Count; i++)
+                {
+                    queue.Dequeue();
+                }
+            }
+            else if (queue.Count >= dequeueNumbers)
+            {
+                for (int i = 0; i < dequeueNumbers; i++)
+                {
+                    queue.Dequeue();
+                }
+            }
+
+            if (queue.Contains(numberToLookFor))
+            {
+                Console.WriteLine("true");
+            }
+            else if (queue.Count == 0)
+            {
+                Console.WriteLine('0');
+            }
+
+            else if (!queue.Contains(numberToLookFor))
+            {
+                int minNumber = int.MaxValue;
+                foreach (var item in queue)
+                {
+                    if (item < minNumber)
+                    {
+                        minNumber = item;
+                    }
+                }
+                Console.WriteLine(minNumber);
+            }
+        }
+    }
+}
