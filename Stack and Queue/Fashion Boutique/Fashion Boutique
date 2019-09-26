@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _1._1_P05_Fashion_Boutique
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] sequenceOfNumbers = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            int capasityOfTherack = int.Parse(Console.ReadLine());
+            int sum = 0;
+            int counterRack = 1;
+            Stack<int> stack = new Stack<int>(sequenceOfNumbers);
+            while (stack.Count != 0)
+            {
+                if (stack.Peek() + sum > capasityOfTherack)
+                {
+                    counterRack++;
+                    sum = 0;
+                }
+                else if (sum < capasityOfTherack)
+                {
+                    sum += stack.Pop();
+                }
+                else if (sum == capasityOfTherack && stack.Count != 0)
+                {
+                    counterRack++;
+                    sum = 0;
+                }
+            }
+            Console.WriteLine(counterRack);
+        }
+    }
+}
