@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _1._1_P07_Truck_Tour
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            Queue<int[]> queue = new Queue<int[]>();
+            int[] info = new int[n];
+            int index  = 0;
+            for (int i = 0; i < n; i++)
+            {
+                info = Console.ReadLine().Split().Select(int.Parse).ToArray(); ;
+                queue.Enqueue(info);
+            }
+           
+
+            while (true)
+            {
+                int diff = 0;
+                foreach (var item in queue)
+                {
+                    int petrol = item[0];
+                    int distance = item[1];
+                    diff += petrol - distance;
+                    if (diff < 0)
+                    {
+                        queue.Enqueue(queue.Dequeue());
+                        index++;
+                        break;
+                    }
+                }
+                if (diff >= 0)
+                {
+                    break;
+                }
+            }
+            Console.WriteLine(index);
+        }
+    }
+}
