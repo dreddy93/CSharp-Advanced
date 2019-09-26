@@ -1,0 +1,82 @@
+using System;
+using System.Collections.Generic;
+
+namespace _1._1_P08_Balanced_Parenthesis
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            Stack<string> stack = new Stack<string>();
+            bool isTrue = false;
+            foreach (var item in input)
+            {
+                if (item == '(' || item == '{' || item == '[')
+                {
+                    stack.Push(item.ToString());
+
+                }
+                else if (item == ')')
+                {
+                    if (stack.Count != 0)
+                    {
+                        char ch = char.Parse(stack.Peek());
+                        if (ch == '(')
+                        {
+                            isTrue = true;
+                            stack.Pop();
+                        }
+                    }
+                    else
+                    {
+                        isTrue = false;
+                        break;
+                    }
+                }
+                else if (item == '}')
+                {
+                    if (stack.Count != 0)
+                    {
+                        char ch = char.Parse(stack.Peek());
+                        if (ch == '{')
+                        {
+                            isTrue = true;
+                            stack.Pop();
+                        }
+                    }
+                    else
+                    {
+                        isTrue = false;
+                        break;
+                    }
+                }
+                else if (item == ']')
+                {
+                    if (stack.Count != 0)
+                    {
+                        char ch = char.Parse(stack.Peek());
+                        if (ch == '[')
+                        {
+                            isTrue = true;
+                            stack.Pop();
+                        }
+                    }
+                    else
+                    {
+                        isTrue = false;
+                        break;
+                    }
+                }
+            }
+            if (isTrue)
+            {
+                Console.WriteLine("YES");
+            }
+            else
+            {
+                Console.WriteLine("NO");
+            }
+        }
+    }
+}
