@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace _1._1_P09_Simple_Text_Editor
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int rotations = int.Parse(Console.ReadLine());
+            Stack<string> stack = new Stack<string>();
+            string text = string.Empty;
+            for (int i = 0; i < rotations; i++)
+            {
+                string[] operations = Console.ReadLine().Split(" ");
+
+                string command = operations[0];
+                switch (command)
+                {
+                    case "1":
+                        stack.Push(text); // Запазване на стойността преди да я променим 
+                        text += operations[1];
+                        break;
+                    case "2":
+                        int index = int.Parse(operations[1]);
+                        stack.Push(text); // Запазване на стойността преди да я променим
+                        text = text.Remove(text.Length - index, index);
+                        break;
+                    case "3":
+                        index = int.Parse(operations[1]);
+                        Console.WriteLine(text[index - 1]);
+                        break;
+                    case "4":
+                        text = stack.Pop(); // Връщане на предишната стойност на текста
+                        break;
+                }
+            }
+        }
+    }
+}
