@@ -1,0 +1,40 @@
+using System;
+using System.Linq;
+
+namespace _1._1_P01_Diagonal_Difference
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int size = int.Parse(Console.ReadLine());
+            int[,] mmArray = new int[size, size];
+            
+            // Пълнене на масива 
+            for (int row = 0; row < size; row++)
+            {
+                int[] numbers = Console.ReadLine().Split(" ").Select(int.Parse).ToArray();
+                for (int col = 0; col < size; col++)
+                {
+                    mmArray[row, col] = numbers[col];
+                }
+            }
+
+            // Вземане на сбора от числата на диагоналите
+            int firstDiagonal = 0;
+            for (int row = 0; row < size; row++)
+            {
+                firstDiagonal += mmArray[row, row];
+            }
+
+            int secondDiagonal = 0;
+            for (int row = 0; row < size; row++)
+            {
+                int col = size - row - 1;
+                secondDiagonal += mmArray[row, col];
+            }
+
+            Console.WriteLine(Math.Abs(firstDiagonal - secondDiagonal));
+        }
+    }
+}
