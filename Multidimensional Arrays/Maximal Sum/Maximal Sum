@@ -1,0 +1,17 @@
+using System;
+using System.Linq;
+
+namespace _1._1_P03_Maximal_Sum__намиране_на_сумата_3х3_елемента_
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] size = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+
+            int rows = size[0];
+            int cols = size[1];
+
+        }
+    }
+}
