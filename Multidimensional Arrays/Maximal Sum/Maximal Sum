@@ -11,7 +11,56 @@ namespace _1._1_P03_Maximal_Sum__намиране_на_сумата_3х3_еле�
 
             int rows = size[0];
             int cols = size[1];
+            int[,] matrix = new int[rows, cols];
+            InitializationOfTheMatrix(rows, cols, matrix);
+            int biggestSum = int.MinValue;
+            int[,] biggestMatrix = new int[3, 3];
 
+            for (int row = 0; row < matrix.GetLength(0) - 2; row++)
+            {
+                for (int col = 0; col < matrix.GetLength(1) - 2; col++)
+                {
+
+                    int sumFirstRow = matrix[row, col] + matrix[row, col + 1] + matrix[row, col + 2];
+                    int sumSecondRow = matrix[row + 1, col] + matrix[row + 1, col + 1] + matrix[row + 1, col + 2];
+                    int sumThirdRow = matrix[row + 2, col] + matrix[row + 2, col + 1] + matrix[row + 2, col + 2];
+
+                    int sum = sumFirstRow + sumSecondRow + sumThirdRow;
+                    if (sum > biggestSum)
+                    {
+                        biggestSum = sum;
+                        for (int i = 0; i < 3; i++)
+                        {
+                            for (int y = 0; y < 3; y++)
+                            {
+                                biggestMatrix[i, y] = matrix[row + i, col + y];
+                            }
+                        }
+                    }
+                }
+            }
+            Console.WriteLine($"Sum = {biggestSum}");
+            for (int row = 0; row < biggestMatrix.GetLength(0); row++)
+            {
+                for (int col = 0; col < biggestMatrix.GetLength(1); col++)
+                {
+                    Console.Write(biggestMatrix[row, col] + " ");
+                }
+                Console.WriteLine();
+            }
+
+        }
+
+        private static void InitializationOfTheMatrix(int rows, int cols, int[,] matrix)
+        {
+            for (int row = 0; row < rows; row++)
+            {
+                int[] input = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+                for (int col = 0; col < cols; col++)
+                {
+                    matrix[row, col] = input[col];
+                }
+            }
         }
     }
 }
