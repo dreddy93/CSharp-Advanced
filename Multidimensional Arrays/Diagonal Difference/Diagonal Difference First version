@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Empty_project
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int size = int.Parse(Console.ReadLine());
+
+            int[,] matrix = new int[size, size];
+
+            Initialisation(matrix);
+            int firstDiagonal = GetFirstdiagonal(matrix);
+            int secondDeagonal = GetSecondDiagonal(matrix);
+
+            Console.WriteLine(Math.Abs(firstDiagonal - secondDeagonal));
+
+        }
+
+        private static int GetSecondDiagonal(int[,] matrix)
+        {
+            int secondDeagonal = 0;
+            int row = 0;
+            for (int index = matrix.GetLength(0) - 1; index >= 0; index--)
+            {
+                secondDeagonal += matrix[index, row];
+                row++;
+            }
+
+            return secondDeagonal;
+        }
+
+        private static int GetFirstdiagonal(int[,] matrix)
+        {
+            int firstDiagonal = 0;
+            for (int row = 0; row < matrix.GetLength(0); row++)
+            {
+                firstDiagonal += matrix[row, row];
+            }
+
+            return firstDiagonal;
+        }
+
+        static void Initialisation(int [,] matrix)
+        {
+            for (int row = 0; row < matrix.GetLength(0); row++)
+            {
+                int[] ch = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+                for (int col = 0; col < matrix.GetLength(1); col++)
+                {
+                    matrix[row, col] = ch[col];
+                }
+            }
+        }
+        
+    }
+}
