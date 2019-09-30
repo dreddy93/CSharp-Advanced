@@ -1,12 +1,87 @@
 using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Text;
 
 namespace _1._1_P04_Matrix_Shuffling
 {
     class Program
     {
+        private static object stringTest;
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int[] demension = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+            int rows = demension[0];
+            int cols = demension[1];
+
+            string[,] mmArray = new string[rows, cols];
+            FillMatrix(mmArray);
+
+            string[] command = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+
+            while (command[0] != "END")
+            {
+                if (command[0] == "swap")
+                {
+                    int n;
+                    if (int.TryParse(command[1], out n) && int.TryParse(command[2], out n) && int.TryParse(command[3], out n) && int.TryParse(command[4], out n))
+                    {
+                        int row1 = int.Parse(command[1]);
+                        int col1 = int.Parse(command[2]);
+                        int row2 = int.Parse(command[3]);
+                        int col2 = int.Parse(command[4]);
+
+                        if ((row1 <= rows && row2 <= rows) || (col1 <= cols && col2 <= cols))
+                        {
+                            SwapingElements(mmArray, row1, col1, row2, col2);
+                            PrintingMatrix(mmArray);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid input!");
+                        }
+                    }
+                    
+
+                }
+                else if (command[1] != "swap")
+                {
+                    Console.WriteLine("Invalid input!");
+                }
+                command = Console.ReadLine().Split();
+            }
+        }
+
+        private static void PrintingMatrix(string[,] mmArray)
+        {
+            for (int row = 0; row < mmArray.GetLength(0); row++)
+            {
+                for (int col = 0; col < mmArray.GetLength(1); col++)
+                {
+                    Console.Write(mmArray[row, col] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+
+        private static void SwapingElements(string[,] mmArray, int row1, int col1, int row2, int col2)
+        {
+            string swap = mmArray[row2, col2];
+            mmArray[row2, col2] = mmArray[row1, col1];
+            mmArray[row1, col1] = swap;
+        }
+
+        private static void FillMatrix(string[,] mmArray)
+        {
+            for (int row = 0; row < mmArray.GetLength(0); row++)
+            {
+                string[] input = Console.ReadLine().Split();
+                for (int col = 0; col < mmArray.GetLength(1); col++)
+                {
+                    mmArray[row, col] = input[col];
+                }
+            }
         }
     }
 }
