@@ -1,0 +1,55 @@
+using System;
+using System.Linq;
+
+namespace _1._1_P05_Snake_Moves
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] demension = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+
+            int rows = demension[0];
+            int cols = demension[1];
+
+            string word = Console.ReadLine();
+            string str = word;
+            char[,] matrix = new char[rows, cols];
+
+            for (int row = 0; row < rows; row++)
+            {
+                for (int col = 0; col < cols; col++)
+                {
+                    
+                    if (str.Length == 0)
+                    {
+                        str = word;
+                        col--;
+                    }
+                    else if (str.Length > 0)
+                    {
+                        matrix[row, col] = str[0];
+                        str = str.Remove(0,1);
+                    }
+                }
+                if (row % 2 != 0)
+                {
+                    for (int col = cols - 1; col >= 0; col--)
+                    {
+                        Console.Write(matrix[row, col]);
+                    }
+                    Console.WriteLine();
+                }
+                else
+                {
+                    for (int col = 0; col < cols; col++)
+                    {
+                        Console.Write(matrix[row, col]);
+                    }
+                    Console.WriteLine();
+                }
+                
+            }
+        }
+    }
+}
