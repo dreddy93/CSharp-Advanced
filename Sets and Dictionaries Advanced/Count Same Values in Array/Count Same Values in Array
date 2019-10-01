@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _1._P01_Count_Same_Values_in_Array
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double[] numbers = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(double.Parse).ToArray();
+            Dictionary<double, int> doubles = new Dictionary<double, int>();
+
+            foreach (var item in numbers)
+            {
+                if (!doubles.ContainsKey(item))
+                {
+                    doubles.Add(item, 1);
+                }
+                else
+                {
+                    doubles[item]++;
+                }
+            }
+
+            foreach (var item in doubles)
+            {
+                Console.WriteLine($"{item.Key} - {item.Value} times");
+            }
+        }
+    }
+}
