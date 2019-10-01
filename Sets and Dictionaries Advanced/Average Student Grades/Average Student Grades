@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _1._P02_Average_Student_Grades
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int inputs = int.Parse(Console.ReadLine());
+            Dictionary<string, List<double>> dic = new Dictionary<string, List<double>>();
+            for (int i = 0; i < inputs; i++)
+            {
+                string[] student = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                string name = student[0];
+                double grade = double.Parse(student[1]);
+                if (!dic.ContainsKey(name))
+                {
+                    dic[name] = new List<double>();
+                }
+                dic[name].Add(grade);
+            }
+            foreach (var item in dic)
+            {
+                Console.WriteLine($"{item.Key} -> {string.Join(" ",item.Value.Select(x => x.ToString("F2")))} (avg: {item.Value.Average():f2})");
+            }
+        }
+    }
+}
