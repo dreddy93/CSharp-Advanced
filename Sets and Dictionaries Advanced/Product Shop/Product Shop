@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _1._P03_Product_Shop
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //lidl, juice, 2.30
+            //fantastico, apple, 1.20
+            //kaufland, banana, 1.10
+            //fantastico, grape, 2.20
+            //Revision
+
+            string[] input = Console.ReadLine().Split(", ", StringSplitOptions.RemoveEmptyEntries);
+             
+            SortedDictionary<string, Dictionary<string, double>> dic = new SortedDictionary<string, Dictionary<string, double>>();
+            while (input[0] != "Revision")
+            {
+                string shopName = input[0];
+                string product = input[1];
+                double price = double.Parse(input[2]);
+
+                if (!dic.ContainsKey(shopName))
+                {
+                    dic[shopName] = new Dictionary<string, double>();
+                }
+
+                dic[shopName][product] = price;
+                input = Console.ReadLine().Split(", ", StringSplitOptions.RemoveEmptyEntries);
+            }
+            foreach (var item in dic)
+            {
+                Console.WriteLine($"{item.Key}->");
+
+                foreach (var products in item.Value)
+                {
+                    Console.WriteLine($"Product: {products.Key}, Price: {products.Value}");
+                }
+            }
+        }
+    }
+}
