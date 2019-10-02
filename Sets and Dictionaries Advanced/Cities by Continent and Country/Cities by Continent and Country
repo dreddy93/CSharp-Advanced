@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+
+namespace _1._P04_Cities_by_Continent_and_Country
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int number = int.Parse(Console.ReadLine());
+
+            Dictionary<string, Dictionary<string, List<string>>> dic = new Dictionary<string, Dictionary<string, List<string>>>();
+
+            for (int i = 0; i < number; i++)
+            {
+                string[] input = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                string continental = input[0];
+                string countri = input[1];
+                string city = input[2];
+
+                if (!dic.ContainsKey(continental)) // Проверка, дали съдържа континента или стринга в първия Dictionary
+                {
+                    dic[continental] = new Dictionary<string, List<string>>();
+                }
+                
+                if (!dic[continental].ContainsKey(countri)) // Проверка, дали във втория речник съдържа странатаи ако не я създаваме 
+                {
+                    dic[continental][countri] = new List<string>();
+                }
+                dic[continental][countri].Add(city); // след като сме създали втория речник добавяме в value на втория речник
+                
+            }
+            foreach (var continentals in dic)
+            {
+                Console.WriteLine($"{continentals.Key}:");
+                foreach (var countries in continentals.Value)
+                {
+                    Console.WriteLine($"{countries.Key} -> {string.Join(", ", countries.Value)}");
+                }
+            }
+        }
+    }
+}
