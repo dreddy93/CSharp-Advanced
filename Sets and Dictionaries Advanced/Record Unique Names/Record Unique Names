@@ -1,0 +1,23 @@
+using System;
+using System.Collections.Generic;
+
+namespace _1._P05_Record_Unique_Name
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int rotations = int.Parse(Console.ReadLine());
+            HashSet<string> names = new HashSet<string>();
+            for (int i = 0; i < rotations; i++)
+            {
+                string name = Console.ReadLine();
+                names.Add(name);
+            }
+            foreach (var item in names)
+            {
+                Console.WriteLine(item);
+            }
+        }
+    }
+}
