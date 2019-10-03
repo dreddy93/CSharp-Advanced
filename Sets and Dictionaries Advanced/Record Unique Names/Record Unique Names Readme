@@ -1,0 +1,39 @@
+Write a program, which will take a list of names and print only the unique names in the list.
+Examples
+Input	Output		
+8
+Ivan
+Pesho
+Ivan
+Stamat
+Pesho
+Alice
+Peter
+Pesho
+        Ivan
+        Pesho
+        Stamat
+        Alice
+        Peter		
+7
+Lyle
+Bruce
+Alice
+Easton
+Shawn
+Alice
+Shawn
+Peter	
+        Lyle
+        Bruce
+        Alice
+        Easton
+        Shawn		
+6
+Roki
+Roki
+Roki
+Roki
+Roki
+Roki	
+         Roki
