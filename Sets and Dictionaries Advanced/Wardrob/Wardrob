@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+
+namespace _1._1_P06_Wardrobe__Dictionary_string_Dictionary_string_int__
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int inputs = int.Parse(Console.ReadLine());
+
+            Dictionary<string, Dictionary<string, int>> dic = new Dictionary<string, Dictionary<string, int>>();
+            for (int i = 0; i < inputs; i++)
+            {
+                string[] input = Console.ReadLine().Split(" -> ");
+                string color = input[0];
+                if (!dic.ContainsKey(color))
+                {
+                    dic[color] = new Dictionary<string, int>();
+                }
+                string[] clothes = input[1].Split(",");
+                foreach (var item in clothes)
+                {
+                    if (!dic[color].ContainsKey(item))
+                    {
+                        dic[color][item] = 0;
+                    }
+                    dic[color][item]++;
+                }
+            }
+            string[] lookFor = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            string lookForColor = lookFor[0];
+            string lookForCloth = lookFor[1];
+
+            foreach (var color in dic)
+            {
+                Console.WriteLine($"{color.Key} clothes:");
+                foreach (var dress in color.Value)
+                {
+                    if (color.Key == lookForColor && dress.Key == lookForCloth)
+                    {
+                        Console.WriteLine($"* {dress.Key} - {dress.Value} (found!)");
+
+                    }
+                    else
+                    {
+                        Console.WriteLine($"* {dress.Key} - {dress.Value}");
+                    }
+                }
+            }
+
+        }
+    }
+}
