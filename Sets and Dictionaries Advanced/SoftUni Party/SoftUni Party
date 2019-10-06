@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+
+namespace _1._P07_SoftUni_Party
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            HashSet<string> vipGuests = new HashSet<string>();
+            HashSet<string> regularGuests = new HashSet<string>();
+
+            while (input != "PARTY")
+            {
+                char ch = input[0];
+                if (char.IsDigit(ch))
+                {
+                    vipGuests.Add(input);
+                }
+                else
+                {
+                    regularGuests.Add(input);
+                }
+                input = Console.ReadLine();
+            }
+            while (input != "END")
+            {
+                if (vipGuests.Contains(input))
+                {
+                    vipGuests.Remove(input);
+                }
+                else if (regularGuests.Contains(input))
+                {
+                    regularGuests.Remove(input);
+                }
+                input = Console.ReadLine();
+            }
+            Console.WriteLine(vipGuests.Count + regularGuests.Count);
+            foreach (var item in vipGuests)
+            {
+                Console.WriteLine(item);
+            }
+            foreach (var item in regularGuests)
+            {
+                Console.WriteLine(item);
+            }
+        }
+    }
+}
