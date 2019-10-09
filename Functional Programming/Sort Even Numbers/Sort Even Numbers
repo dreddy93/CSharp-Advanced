@@ -1,0 +1,15 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _1._P01_Sort_Even_Numbers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            IEnumerable<int> randomNumbers = Console.ReadLine().Split(", ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).Where(x => x % 2 == 0).OrderBy(x => x); // Where изкарва черните числа, а OrderBy ги подрежда по големина. В OrderBy трябва да си сложи х =>(отива в) х, за да може да ги сортира. 
+            Console.WriteLine(string.Join(", ", randomNumbers));
+        }
+    }
+}
