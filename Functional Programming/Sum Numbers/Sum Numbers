@@ -1,0 +1,18 @@
+  
+using System;
+using System.Linq;
+
+namespace _1._P02_Sum_Numbers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbers = Console.ReadLine().Split(", ", StringSplitOptions.RemoveEmptyEntries).Select(x => int.Parse(x)).ToArray();
+            int result = numbers.Sum();
+            int count = numbers.Count();
+            Console.WriteLine(count);
+            Console.WriteLine(result);
+        }
+    }
+}
