@@ -1,0 +1,19 @@
+using System;
+using System.Linq;
+
+namespace _1._P03_Count_Uppercase_Words
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] input = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            string[] words = input.Where(x => char.IsUpper(x[0])).ToArray();
+
+            foreach (var item in words)
+            {
+                Console.WriteLine(item);
+            }
+        }
+    }
+}
