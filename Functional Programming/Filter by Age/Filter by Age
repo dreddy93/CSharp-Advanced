@@ -1,0 +1,99 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _1._P05_Filter_by_Age
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int inputs = int.Parse(Console.ReadLine());
+            Dictionary<string, int> namesAndAges = new Dictionary<string, int>();
+            for (int i = 0; i < inputs; i++)
+            {
+                string[] input = Console.ReadLine().Split(", ", StringSplitOptions.RemoveEmptyEntries).ToArray();
+                namesAndAges[input[0]] = int.Parse(input[1]);
+            }
+            string condition = Console.ReadLine();
+            int age = int.Parse(Console.ReadLine());
+            string format = Console.ReadLine();
+            if (condition == "younger")
+            {
+                PrintingYoungerNames(namesAndAges, age, format);
+            }
+            else if (condition == "older")
+            {
+                PrintingOlderNames(namesAndAges, age, format);
+            }
+        }
+
+        private static void PrintingYoungerNames(Dictionary<string, int> namesAndAges, int age, string format)
+        {
+            if (format == "name age")
+            {
+                foreach (var item in namesAndAges)
+                {
+                    if (item.Value < age)
+                    {
+                        Console.WriteLine($"{item.Key} - {item.Value}");
+                    }
+                }
+            }
+            else if (format == "name")
+            {
+                foreach (var item in namesAndAges)
+                {
+                    if (item.Value < age)
+                    {
+                        Console.WriteLine(item.Key);
+                    }
+                }
+            }
+            else
+            {
+                foreach (var item in namesAndAges)
+                {
+                    if (item.Value < age)
+                    {
+                        Console.WriteLine(item.Value);
+                    }
+                }
+            }
+        }
+
+        private static void PrintingOlderNames(Dictionary<string, int> namesAndAges, int age, string format)
+        {
+            if (format == "name age")
+            {
+                foreach (var item in namesAndAges)
+                {
+                    if (item.Value >= age)
+                    {
+                        Console.WriteLine($"{item.Key} - {item.Value}");
+                    }
+                }
+            }
+            else if (format == "name")
+            {
+                foreach (var item in namesAndAges)
+                {
+                    if (item.Value >= age)
+                    {
+                        Console.WriteLine(item.Key);
+                    }
+                }
+            }
+            else
+            {
+                foreach (var item in namesAndAges)
+                {
+                    if (item.Value >= age)
+                    {
+                        Console.WriteLine(item.Value);
+                    }
+                }
+            }
+        }
+    }
+}
