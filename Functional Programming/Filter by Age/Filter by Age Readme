@@ -1,0 +1,45 @@
+Write a program that receives an integer N on first line. On the next N lines, read pairs of "[name], [age]". 
+Then read three lines with:
+•	Condition - "younger" or "older"
+•	Age - Integer
+•	Format - "name", "age" or "name age"
+Depending on the condition, print the correct pairs in the correct format. Create your own methods.
+Examples
+Input	              Output		
+5
+Pesho, 20
+Gosho, 18
+Mimi, 29
+Ico, 31
+Simo, 16
+older
+20
+name age	
+                    Pesho - 20
+                    Mimi - 29
+                    Ico - 31		
+5
+Pesho, 20
+Gosho, 18
+Mimi, 29
+Ico, 31
+Simo, 16
+younger
+20
+name	
+                    Gosho
+                    Simo		
+5
+Pesho, 20
+Gosho, 18
+Mimi, 29
+Ico, 31
+Simo, 16
+younger
+50
+age
+                    20
+                    18
+                    29
+                    31
+                    16
