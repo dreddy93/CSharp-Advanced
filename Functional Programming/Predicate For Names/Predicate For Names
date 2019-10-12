@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _1._1_П07_Predicate_For_Names
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int lenght = int.Parse(Console.ReadLine());
+
+            string[] names = Console.ReadLine().Split(" ").ToArray();
+
+            Predicate<string> operation = x => x.Length <= lenght;
+
+            foreach (var item in names)
+            {
+                if (operation(item))
+                {
+                    Console.WriteLine(item);
+                }
+            }
+
+        }
+    }
+}
