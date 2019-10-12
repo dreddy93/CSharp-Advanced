@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _1._1_P04_Find_Evens_or_Odds
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] startStop = Console.ReadLine().Split(" ").Select(int.Parse).ToArray();
+            int start = startStop[0];
+            int stop = startStop[1];
+            List<int> evens = new List<int>(0);
+            List<int> odds = new List<int>(0);
+
+            Predicate<int> evenNumbers = x => x % 2 == 0;
+            Predicate<int> oddNumbers = x => x % 2 != 0;
+
+            for (int i = start; i <= stop; i++)
+            {
+                if (evenNumbers(i))
+                {
+                    evens.Add(i);
+                }
+                else if (oddNumbers(i))
+                {
+                    odds.Add(i);
+                }
+            }
+            string command = Console.ReadLine();
+            switch (command)
+            {
+                case "odd": Console.WriteLine(string.Join(" ", odds)); break;
+                case "even": Console.WriteLine(string.Join(" ", evens)); break;
+            }
+            
+        }
+    }
+}
