@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _1._1_P09_List_Of_Predicates
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int range = int.Parse(Console.ReadLine());
+
+            int[] devisions = Console.ReadLine().Split().Select(int.Parse).ToArray();
+
+            bool isDevible = true;
+            List<int> numbers = new List<int>();
+            for (int i = 1; i <= range; i++)
+            {
+                isDevible = true;
+                foreach (var item in devisions)
+                {
+                    if (i % item != 0)
+                    {
+                        isDevible = false;
+                        break;
+                    }
+                }
+                if (isDevible)
+                {
+                    numbers.Add(i);
+                }
+
+            }
+            Console.WriteLine(string.Join(" ", numbers));
+        }
+    }
+}
