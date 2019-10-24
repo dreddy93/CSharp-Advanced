@@ -17,7 +17,7 @@ namespace _1._1_P08_Balanced_Parenthesis
                     stack.Push(item.ToString());
 
                 }
-                else if ( item == ')')
+                else if (item == ')')
                 {
                     if (stack.Count != 0)
                     {
