@@ -1,6 +1,6 @@
 using System;
-using System.Linq  ; 
-
+using System.Linq   ; 
+ 
 namespace _1._1_P01_Action_Point
 {
     class Program
