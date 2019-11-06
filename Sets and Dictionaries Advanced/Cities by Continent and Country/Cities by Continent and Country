@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic  ;
+using System.Collections.Generic   ;
 
 namespace _1._P04_Cities_by_Continent_and_Country
 {
