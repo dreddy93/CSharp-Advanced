@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic    ;
+using System.Collections.Generic     ;
 
 namespace _1._1_P08_Balanced_Parenthesis
 {
