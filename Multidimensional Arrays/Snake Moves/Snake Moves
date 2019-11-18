@@ -1,5 +1,5 @@
 using System;
-using System.Linq    ;
+using System.Linq     ;
 
 namespace _1._1_P05_Snake_Moves
 {
