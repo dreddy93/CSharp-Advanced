@@ -1,5 +1,5 @@
   
-using System  v;
+using System   v;
 using System.Linq;
 
 namespace _1._P02_Sum_Numbers
